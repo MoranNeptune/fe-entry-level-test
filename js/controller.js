@@ -20,6 +20,13 @@ export default class Controller {
 		this._activeRoute = '';
 		this._lastActiveRoute = null;
 		document.getElementById("new-todo").focus();
+		fetch('https://jsonplaceholder.typicode.com/todos')
+			.then((response) => response.json())
+			.then((json) => {
+				for (const row of json) {
+					this.addItemNew(row.id, row.title, row.completed);
+				}
+			});
 	}
 
 	setView(raw) {
@@ -34,6 +41,17 @@ export default class Controller {
 			id: Date.now(),
 			title,
 			completed: false
+		}, () => {
+			this.view.clearNewTodo();
+			this._filter(true);
+		});
+	}
+
+	addItemNew(id, title, completed) {
+		this.store.insert({
+			id: id,
+			title,
+			completed: completed
 		}, () => {
 			this.view.clearNewTodo();
 			this._filter(true);
