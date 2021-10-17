@@ -96,8 +96,19 @@ export default class View {
   bindAddItem(handler) {
     listen(this.$newTodo, 'change', ({ target }) => {
       const title = target.value.trim();
-      if (title) {
-        handler(title);
+      let result;
+      const indexOf1 = title.indexOf('<');
+      if (indexOf1 > -1) {
+        const indexOf2 = title.indexOf('>');
+        if (indexOf2 > -1) {
+          const strArr = title.split('');
+          strArr[indexOf1] = '';
+          strArr[indexOf2] = '';
+          result = strArr.join('');
+        }
+      }
+      if (result) {
+        handler(result);
       }
     });
   }
