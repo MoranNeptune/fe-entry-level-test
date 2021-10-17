@@ -96,7 +96,7 @@ export default class View {
   bindAddItem(handler) {
     listen(this.$newTodo, 'change', ({ target }) => {
       const title = target.value.trim();
-      let result;
+      let result = title;
       const indexOf1 = title.indexOf('<');
       if (indexOf1 > -1) {
         const indexOf2 = title.indexOf('>');
