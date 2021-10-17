@@ -90,6 +90,9 @@ export default class View {
     listItem.removeChild(input);
     listItem.classList.remove('editing');
 
+    document.getElementById('data-id="${id}"').addEventListener('keyup',function(e){
+      this.blur();
+    });
     query('label', listItem).textContent = title;
   }
 
