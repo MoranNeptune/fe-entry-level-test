@@ -19,6 +19,7 @@ export default class Controller {
 
 		this._activeRoute = '';
 		this._lastActiveRoute = null;
+		document.getElementById("new-todo").focus();
 	}
 
 	setView(raw) {
