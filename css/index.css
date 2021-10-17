@@ -146,6 +146,7 @@ body {
 	padding: 0;
 	list-style: none;
 	max-height: 300px;
+	overflow-y: scroll
 }
 
 .todo-list li {
